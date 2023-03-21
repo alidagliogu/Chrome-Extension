@@ -35,26 +35,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _this = this;
-("./content.css");
-var fiyat;
-var ht;
-var last_ht;
-last_ht = 0;
+var ws_data;
+var sc;
+var last_sc;
+last_sc = 0;
 var data;
 var obj;
 var btn;
 var inp;
 var div;
+var savebtn;
+// savebtn =document.createElement("button");
+// savebtn.innerText="save excel";
+// savebtn.style.cssText="padding: 5px 20px;border: none;background: orange;cursor: pointer;border-radius: 10px;font-size: 16px;color: white;font-weight: 700;letter-spacing: 1px; margin-left:5px;"
 btn = document.createElement("button");
 inp = document.createElement("input");
-inp.type = "text";
+inp.setAttribute("type", "number");
 inp.placeholder = "tekrar sayısı";
 div = document.querySelector("#search-app > div > div.srch-rslt-cntnt > div.srch-prdcts-cntnr > div.srch-rslt-title");
-btn.innerText = "fiyatları listele";
-btn.style.cssText = "padding:20px 40px; border:none; Background:lightgray;cursor:pointer;";
-div.appendChild(btn);
+btn.innerText = "Fiyatları Listele";
+btn.style.cssText = "padding: 5px 20px;border: none;background: orange;cursor: pointer;border-radius: 10px;font-size: 16px;color: white;font-weight: 700;letter-spacing: 1px; margin-left:5px;";
+inp.style.cssText = "border: 1px solid orange;font-size: 16px;width: 110px;padding: 10px 16px;";
 div.appendChild(inp);
-fiyat = [];
+div.appendChild(btn);
+// div.appendChild(savebtn)
+ws_data = [];
 function sleep(ms) {
     return new Promise(function (resolve) { return setTimeout(resolve, ms); });
 }
@@ -69,9 +74,9 @@ btn.addEventListener("click", function () { return __awaiter(_this, void 0, void
                         marka: element.parentElement.parentElement.previousElementSibling.previousElementSibling.querySelector("span:nth-child(1)").innerText,
                         description: element.parentElement.parentElement.previousElementSibling.previousElementSibling.querySelector("span:nth-child(2)").innerText
                     };
-                    fiyat.push(obj);
+                    ws_data.push(obj);
                 });
-                console.log(fiyat);
+                console.log(ws_data);
                 return [2 /*return*/];
             });
         });
@@ -79,16 +84,16 @@ btn.addEventListener("click", function () { return __awaiter(_this, void 0, void
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                ht = inp.value;
-                last_ht = 0;
+                sc = inp.value;
+                last_sc = 0;
                 _a.label = 1;
             case 1:
-                if (!(ht != last_ht)) return [3 /*break*/, 3];
+                if (!(sc != last_sc)) return [3 /*break*/, 3];
                 return [4 /*yield*/, sleep(3000)];
             case 2:
                 _a.sent();
                 document.querySelector("html").scrollTo(0, document.querySelector("#search-app").scrollHeight);
-                last_ht += 1;
+                last_sc += 1;
                 return [3 /*break*/, 1];
             case 3: return [4 /*yield*/, dataekle()];
             case 4:
@@ -96,4 +101,8 @@ btn.addEventListener("click", function () { return __awaiter(_this, void 0, void
                 return [2 /*return*/];
         }
     });
-}); });
+}); }
+// savebtn.addEventListener("click",()=>{
+//   saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'test.xlsx');
+// })
+);

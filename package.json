@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "sheetjs": "^2.0.0"
+    "sheetjs": "^2.0.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.2/xlsx-0.19.2.tgz"
   }
 }
